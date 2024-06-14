@@ -96,6 +96,25 @@
       "device": "STM32F401RE",
       "runToEntryPoint": "main",
       "interface": "swd"
+    },
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "cppdbg",
+      "request": "launch",
+      "args": [],
+      "stopAtEntry": false,
+      "externalConsole": true,
+      "cwd": "c:/Users/rudra/Desktop/Firmware-for-STM32F401RE/app/src",
+      "program": "c:/Users/rudra/Desktop/Firmware-for-STM32F401RE/app/src/build/Debug/outDebug",
+      "MIMode": "gdb",
+      "miDebuggerPath": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
     }
   ]
 }

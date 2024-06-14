@@ -4,7 +4,8 @@
             "name": "windows-gcc-x64",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/libopencm3/include"
+                "${workspaceFolder}/libopencm3/include",
+                "${workspaceFolder}/app/inc"
             ],
             "defines": [
                 "STM32F4",
