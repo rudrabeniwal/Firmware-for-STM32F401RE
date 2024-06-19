@@ -4,15 +4,23 @@
 #include <libopencm3/stm32/rcc.h>
 #include <libopencm3/stm32/gpio.h>
 
+#include <libopencm3/cm3/scb.h>
+
 // Include the core system header file for system-level configurations and functionalities
 #include "core/system.h"
 #include "core/timer.h"
+
+#define BOOTLOADER_SIZE (0x8000U)
 
 // Define macros for the LED port and pin
 // LED_PORT: The GPIO port where the LED is connected (GPIOA)
 // LED_PIN: The GPIO pin number where the LED is connected (GPIO5)
 #define LED_PORT (GPIOA)
 #define LED_PIN (GPIO5)
+
+static void vector_setup(void) {
+    SCB_VTOR = BOOTLOADER_SIZE; //Before this the offset of that register is zero and looked into normal location, so we add bootloader location
+}
 
 // Define a static function to set up the GPIO
 // This function enables the clock for GPIOA and configures the specified pin as an output
@@ -36,6 +44,9 @@ static void gpio_setup(void) {
 
 // The main function where program execution starts
 int main(void) {
+
+    vector_setup();
+
     // Perform system setup which includes setting up RCC and SysTick
     system_setup();
     
